@@ -1,12 +1,15 @@
 class UsersController < ApplicationController
-before_action :authenticate_user!
 
   def edit
   end
 
   def show
-    @user = current_user.id
+    @user =　User.find(params[])
+    @post_images = @user.post_images
     
+  end
+  
+  def index
   end
 
 end
