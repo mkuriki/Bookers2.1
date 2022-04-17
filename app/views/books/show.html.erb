@@ -1,7 +1,7 @@
 <h1>Book detail</h1>
 <div>
   <%= link_to image_tag(@book.get_image), books_path %>
-  <p>user name <%= @user.name %></p>
+  <p>user name <%= @book.user.name %></p>
   <p>title <%= @book.title %></p>
   <p>opinion <%= @book.body %></p>
   <% if @book.user == current_user %>

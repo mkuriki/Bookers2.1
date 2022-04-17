@@ -9,7 +9,6 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @user = @book.user
   end
 
   def index
@@ -19,7 +18,7 @@ class BooksController < ApplicationController
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    redirect_to action: :show
+    redirect_to '/books'
   end
   
     # 投稿データのストロングパラメータ
