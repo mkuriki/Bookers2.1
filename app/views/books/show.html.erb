@@ -2,11 +2,13 @@
 <div>
   <%= link_to image_tag(@book.get_image), books_path %>
   <p>user name <%= @book.user.name %></p>
-  <p>title <%= @book.title %></p>
+  <p>title <%= link_to @book.title, book_path %></p>
   <p>opinion <%= @book.body %></p>
   <% if @book.user == current_user %>
   <%= link_to "edit", book_path(@book), method: :update %>
   <%= link_to "destroy", book_path(@book), method: :delete %>
   <% end %>
+  
+  <%= render 'books/info', book: @book %>
 
 </div>
