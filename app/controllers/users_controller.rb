@@ -11,10 +11,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user =　User.find(params[:id])
-    @post_images = @user.post_images
-    @book = Book.find(params[:id])
+    @books = current_user.books 
   end
   
+  def index
+    @users = User.all
+  end
+  
+      # 投稿データのストロングパラメータ
+  private
+
+  def book_params
+    params.require(:book).permit(:title, :body)
+  end
 
 end

@@ -1,15 +1,33 @@
+<body>
+    <h2>Users</h2>
+    <table>
+        <tr>
+            <th>image</th>
+            <th colspan="1"></th>
+            <th>name</th>
+            <th colspan="1"></th>
+        </tr>
+        <tbody>
+           <% @users.each do |user| %>
+               <tr>
+                 <td><%= image_tag user.get_profile_image(100,100) %></td>
+                 <th colspan="1"></th>
+                 <td><%= user.name %></td>
+                 <td><%= link_to 'show', user_path(user) %></td>
+               </tr>
+           <% end %>
+        </tbody>
+    </table>
+            <h2>User Info</h2>
+            
+            <h2>New Book</h2>
+                
+            <%= form_with model: @book do |f| %>
+                <h4>Title</h4>
+                <div class = field><%= f.text_field :title %></div>
+                <h4>Opinion</h4>
+                <div class = field><%= f.text_area :body %></div>
+                <div class = actions><%= f.submit 'Create Book' %></div>
+            <% end %>
 
-
-<h2>User Info</h2>
-
-
-
-<h2>New Book</h2>
-    
-<%= form_with model: @book do |f| %>
-    <h4>Title</h4>
-    <div class = field><%= f.text_field :title %></div>
-    <h4>Opinion</h4>
-    <div class = field><%= f.text_area :body %></div>
-    <div class = actions><%= f.submit 'Create Book' %></div>
-<% end %>
+</body>
