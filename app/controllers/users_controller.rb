@@ -1,28 +1,35 @@
 class UsersController < ApplicationController
   
-  def create
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-    @book.save
-    redirect_to book_path(@book.id)
-  end
-  
   def edit
+    @user = User.find(params[:id])
   end
 
   def show
-    @books = current_user.books 
+    @user = User.find(params[:id])
+    @books = @user.books
+    @new_book = Book.new
   end
   
   def index
     @users = User.all
+    @book = Book.new
+    @user = current_user
   end
   
-      # 投稿データのストロングパラメータ
+  def update
+    @user = User.find(params[:id])
+    
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+      flash[:notice] = "User was successfully updated."
+    else
+      render :edit
+    end
+  end
+  
   private
 
-  def book_params
-    params.require(:book).permit(:title, :body)
+  def user_params
+    params.require(:user).permit(:name, :introduction)
   end
-
 end

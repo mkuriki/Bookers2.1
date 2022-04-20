@@ -2,6 +2,9 @@ class Book < ApplicationRecord
     has_one_attached :image
     belongs_to :user 
     
+    validates :title, presence: true
+    validates :body, length: { maximum: 200 }, presence: true
+    
     def get_profile_image(width, height)
     unless profile_image.attached?
     file_path = Rails.root.join('app/assets/images/sample-author1.jpg')

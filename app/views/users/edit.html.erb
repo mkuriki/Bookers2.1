@@ -1,12 +1,21 @@
-<body>
-        <h1>User info</h1>
-        <%= form_with model: @user do |f| %>
-          <div for="inputName">Name</div>
-          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder: current_user.name %>
-          <div for="inputImage">Image</div>
-          <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>  
-          <div for="inputIntroduction">Introduction</div>
-          <%= f.text_area :introduction, autofocus: true, id:"inputName" %>
-          <%= f.submit "Update User" %>
+    <h1>User info</h1>
+    <%= form_with model: @user do |f| %>
+
+    <% if @user.errors.any? %>
+        <%= @user.errors.count %>件のerrorが発生しました 
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
         <% end %>
-</body>
+        </ul>
+    <% end %> 
+    
+      <div for="inputName">Name</div>
+      <%= f.text_field :name, autofocus: true, id:"inputName", placeholder: current_user.name %>
+      <div for="inputImage">Image</div>
+      <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>  
+      <div for="inputIntroduction">Introduction</div>
+      <%= f.text_area :introduction, autofocus: true, id:"inputName" %>
+      <%= f.submit "Update User" %>
+    <% end %>
+
