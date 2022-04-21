@@ -1,17 +1,43 @@
 <p id = "notice"><%= flash[:notice] %></p>
+<body>
+    <main>
+      <p id="notice"></p>
+      <div class = container>
+        <div class = row>
+          <%= render 'books/info', book: @new_book, user: @user %>
+          <div class="col-md-8 offset-md-1">
+            <h1>Book detail</h1>
+            <table class = table>
+              <tbody>
+                <tr>
+                  <td>
+                    <%= link_to image_tag(@book.get_image), user_path(@user) %>
+                  </td>
+                  <td>
+                    <%= link_to @book.user.name, user_path(@user) %>
+                  </td>
+                  <td>
+                    <%= link_to @book.title, book_path %>
+                  </td>
+                  <td>
+                    <%= @book.body %>
+                  </td>
+                  
+                  <% if @book.user == current_user %>
+                  <td>
+                    <%= link_to "edit", edit_book_path(@book), class: "btn btn-sm btn-success edit_book" %>
+                  </td>
+                  <td>
+                    <%= link_to "destroy", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger destroy_book" %>
+                  </td>
+                  <% end %>
+                </tr>
+              </tbody>
+              
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+</body>
 
-<h1>Book detail</h1>
-
-  <div>
-    <%= link_to image_tag(@book.get_image), user_path(@user) %>
-    <p>user name <%= link_to @book.user.name, user_path(@user) %></p>
-    <p>title <%= link_to @book.title, book_path %></p>
-    <p>opinion <%= @book.body %></p>
-    <% if @book.user == current_user %>
-    <%= link_to "edit", edit_book_path(@book) %>
-    <%= link_to "destroy", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-    <% end %>
-    
-    <%= render 'books/info', book: @new_book, user: @user %>
-  
-  </div>
