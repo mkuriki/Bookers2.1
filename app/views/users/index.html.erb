@@ -8,7 +8,6 @@
                 <table  class="table table-hover">
                     <tr>
                         <th>image</th>
-                        <th colspan="1"></th>
                         <th>name</th>
                         <th colspan="1"></th>
                     </tr>
@@ -16,7 +15,6 @@
                        <% @users.each do |user| %>
                            <tr>
                              <td><%= image_tag user.get_profile_image(100,100) %></td>
-                             <th colspan="1"></th>
                              <td><%= user.name %></td>
                              <td><%= link_to 'show', user_path(user) %></td>
                            </tr>
