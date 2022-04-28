@@ -28,6 +28,7 @@ before_action :correct_user, only: [:edit, :update]
     end
   end
   
+  
   private
 
   def user_params
