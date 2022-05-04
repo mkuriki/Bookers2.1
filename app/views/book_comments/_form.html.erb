@@ -1,12 +1,3 @@
-<% if @comment.errors.any? %>
-    <%= book_comment.errors.count %>errors prohibited this obj from being saved: 
-    <ul>
-    <% @comment.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-    </ul>
-<% end %>
-
 <%= form_with model: [book, book_comment] do |f| %>
     <%= f.text_area :comment, rows:'5', placeholder: "コメントをここに" , class: "w-100" %>
     <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
