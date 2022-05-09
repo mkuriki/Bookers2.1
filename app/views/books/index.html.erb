@@ -29,7 +29,9 @@
                                  <th colspan="1"></th>
                                  <td><%= book.body %></td>
                                  <td>コメント数: <%= book.book_comments.count %></td>
-                                 <td><%= render "favorites/fav", book: book %></td>
+                                 <tr id="fav_<%= book.id %>">
+                                  <td><%= render "favorites/fav", book: book %></td>
+                                 </tr>
                             </tr>
                        <% end %>
                     </tbody>

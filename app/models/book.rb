@@ -7,7 +7,7 @@ class Book < ApplicationRecord
     validates :body, length: { maximum: 200 }, presence: true
     
     def favorited_by?(user)
-        favorites.exists?(user_id: user.id)
+      favorites.exists?(user_id: user.id)
     end
     
     def self.looks(search, word)
