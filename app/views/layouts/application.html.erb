@@ -67,12 +67,14 @@
               <% end %>
               </li>
               <% end %>
-            </ul>
+              </ul>
+              <div class="d-flex justify-content-center mb-2">
+                <%= render 'searches/form' %>
+              </div> 
         </div>
       </nav>
     </header>
     <p id = "notice"><%= flash[:notice] %></p>
-    <%= render partial: ‘search’ %>   
     <main>
     <%= yield %>
     </main>
