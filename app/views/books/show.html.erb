@@ -25,9 +25,9 @@
                   <td>
                     コメント数 <%= @book.book_comments.count %>
                   </td>
-                  <td>
-                    <%= render "favorites/fav", book: @book %>
-                  </td>
+                  <tr id="fav_<%= @book.id %>">
+                   <td><%= render "favorites/fav", book: @book %></td>
+                  </tr>
                   
                   <% if @user == current_user %>
                     <td>
