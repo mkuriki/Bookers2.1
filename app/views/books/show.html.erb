@@ -9,7 +9,7 @@
             <h1>Book detail</h1>
             <table class = table>
               <tbody>
-                <tr>
+                <tr id="book_<%= @book.id %>">
                   <td>
                     <%= link_to image_tag(@book.user.get_profile_image(100,100)), user_path(@user) %>
                     <div>
@@ -22,9 +22,7 @@
                   <td>
                     <%= @book.body %>
                   </td>
-                  <td>
-                    コメント数 <%= @book.book_comments.count %>
-                  </td>
+                  <td class="comments-count">コメント数: <%= @book.book_comments.count %></td>
                   <tr id="fav_<%= @book.id %>">
                    <td><%= render "favorites/fav", book: @book %></td>
                   </tr>
@@ -41,7 +39,10 @@
               </tbody>
             </table>
             
-            <%= render "book_comments/index", book: @book %>
+            <div class="book_comments">
+              <%= render 'book_comments/index', book: @book %>
+            </div>
+            
             <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
             
           </div>
