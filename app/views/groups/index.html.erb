@@ -10,11 +10,18 @@
                                 <th>Uesrs</th>
                             </tr>
                         </thead>
+                        <body>
+                            <% @groups.each do |group| %>
+                            <tr>
+                               <td><%= image_tag user.get_profile_image(100,100) %></td>
+                               <td>group.name</td>
+                               <td>group.introduction</td>
+                            </tr>
+                            <% end %>
+                        </body>
                      </table>
                 </div>
-                
             </div>
-            
         </div>
     </main>
 </body>
