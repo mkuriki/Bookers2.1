@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'home/about' => 'homes#about', as: 'about'
   get 'search' => 'searches#search'
+  post 'groups/new' => 'groups#create'
   
   resources :books do
     resource :favorites, only: [:create, :destroy]

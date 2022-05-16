@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
   def index
       @books = Book.all
       @groups = Group.all
+      @group = Group.new
   end
 
   def show
@@ -12,7 +13,17 @@ class GroupsController < ApplicationController
   end
 
   def create
-      @group = Group.new(group_params) 
+      @group = Group.new(group_params)
+      
+      if @group.save
+        redirect_to groups_path
+        flash[:notice] = "You have created book successfully."
+      else
+        @books = Book.all
+        @groups = Group.all
+        render :index
+      end
+      
   end
 
   def destroy
@@ -30,7 +41,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-      params.require(:group).permit(:name, :introduction, :image) 
+      params.require(:group).permit(:name, :introduction) 
   end
 
   def ensure_correct_user
