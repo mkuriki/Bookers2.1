@@ -3,12 +3,11 @@ class GroupsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def new
-    @group =Group.new
+    @group = Group.new
   end
 
   def index
     @groups = Group.all
-    @book = Book.new
   end
 
   def show
@@ -18,13 +17,13 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.owner_id = current_user
+    
     if @group.save
       redirect_to groups_path
       flash[:notice] = "You have created group successfully."
     else
-      render 'new'
+      render :index
     end
-    
   end
 
   def destroy
@@ -42,7 +41,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :introduction) 
+    params.require(:group).permit(:name, :introduction, :group_image) 
   end
 
   def ensure_correct_user

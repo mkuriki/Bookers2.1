@@ -13,10 +13,12 @@
                         </thead>
                         <body>
                             <% @groups.each do |group| %>
-                            <tr>
-                               <td><%= group.name %></td>
-                               <td><%= group.introduction %></td>
-                            </tr>
+                                <tr>
+                                    <td><%= image_tag group.get_group_image(50,50) %></td>
+                                    <td><%= group.name %></td>
+                                    <td><%= group.introduction %></td>
+                            
+                                </tr>
                             <% end %>
                         </body>
                      </table>
