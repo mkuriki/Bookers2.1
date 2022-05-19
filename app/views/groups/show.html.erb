@@ -5,16 +5,23 @@
             <table class = "table">
                 <thead>
                     <tr>
-                        <th>group name</th>
-                        <th>introduction</th>
+                        <th colspan="1"></th>
+                        <th>Group name</th>
+                        <th>Introduction</th>
+                        <th>Members</th>
+                        <th colspan="1"></th>
                     </tr>                        
                 </thead>
                 <tbody>
-                    
+                    <tr>
+                        <td><%= image_tag @group.get_group_image(50,50) %></td>
+                        <td><%= link_to @group.name, group_path(@group) %></td>
+                        <td><%= @group.introduction %></td>
+                        <td></td>
+                        <td><%= link_to "Join this group", groups_path, class: "btn btn-sm btn-success join_group" %></td>
+                    </tr>
                 </tbody>
-                
             </table>
-            
         </div>
     </div>
 </div>
