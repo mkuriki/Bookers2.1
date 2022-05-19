@@ -17,7 +17,9 @@
                                     <td><%= image_tag group.get_group_image(50,50) %></td>
                                     <td><%= group.name %></td>
                                     <td><%= group.introduction %></td>
-                            
+                                    <% if group.is_owned_by?(current_user) %>
+                                        <td><%= link_to "Edit", edit_group_path(group), class: "btn btn-sm btn-success edit_group" %></td>
+                                    <% end %>
                                 </tr>
                             <% end %>
                         </body>
