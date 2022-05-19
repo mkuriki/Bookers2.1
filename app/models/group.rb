@@ -16,7 +16,7 @@ class Group < ApplicationRecord
     end
     
     def is_owned_by?(user)
-    owner_id == user.id
+      owner_id == user.id
     end
 
 end

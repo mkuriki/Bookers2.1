@@ -32,15 +32,15 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find(params[:id])
-    @group.destroy
-    redirect_to '/groups'
+
   end
 
   def update
-    @group = Group.find(params[:id])
-    @group.update
-    redirect_to '/groups'
+    if @group.update(group_params)
+      redirect_to groups_path
+    else
+      render "edit"
+    end
   end
 
   private
@@ -51,6 +51,8 @@ class GroupsController < ApplicationController
 
   def ensure_correct_user
     @group = Group.find(params[:id])
-    redirect_to groups_path  unless @group.owner_id == current_user
+    unless @group.owner_id == current_user.id
+      redirect_to groups_path
+    end
   end
 end
