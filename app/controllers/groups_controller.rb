@@ -19,10 +19,10 @@ class GroupsController < ApplicationController
     @group.owner_id = current_user.id
     
     if @group.save
-      redirect_to groups_path
+      redirect_to group_path(@group)
       flash[:notice] = "You have created group successfully."
     else
-      render :index
+      render :show
     end
   end
   

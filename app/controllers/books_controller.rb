@@ -10,7 +10,7 @@ before_action :correct_user, only: [:edit, :update]
       flash[:notice] = "You have created book successfully."
     else
       @books = Book.all
-      @user = current_user     
+      # @user = current_user     
       render :index
     end  
   end
